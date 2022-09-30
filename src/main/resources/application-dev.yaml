@@ -1,0 +1,17 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    # 配置数据源类型
+    type: com.zaxxer.hikari.HikariDataSource
+    # 配置连接数据库信息
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.132.140.20:3306/health?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: lz1024cx
+
+server:
+  tomcat:
+    max-swallow-size: 100MB
