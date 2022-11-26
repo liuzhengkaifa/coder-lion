@@ -7,3 +7,10 @@ spring:
       matching-strategy: ANT_PATH_MATCHER
   profiles:
     active: dev
+
+  redis:
+    database: 1
+    password: lzrm
+    host: 101.132.140.20
+    post: 6379
+    timeout: 5000
