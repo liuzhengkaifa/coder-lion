@@ -6,10 +6,12 @@ import com.coder.lion.demo.service.ImportService;
 import com.coder.lion.demo.service.listener.DeadManExcelDataListener;
 import com.coder.lion.demo.utils.MultipartFileToFileUtils;
 import com.coder.lion.demo.utils.RedisUtils;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.util.concurrent.Future;
 
 /**
  * @author liuzheng
@@ -32,5 +34,31 @@ public class ImportServiceImpl implements ImportService {
     public String saveRedisVale() {
         redisUtils.set("liuzheng", "yyds");
         return null;
+    }
+
+    @Async
+    @Override
+    public Future addUserByAsync(String str) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        System.out.println("ImportServiceImpl.addUserByAsync--start" + str + Thread.currentThread());
+        Thread.sleep(3000);
+        System.out.println("ImportServiceImpl.addUserByAsync--end");
+        long end = System.currentTimeMillis();
+        long use = end- start;
+        System.out.println("耗时 = " + use + "ms");
+        return null;
+    }
+
+    @Async
+    @Override
+    public void updateByAsync(String str) throws InterruptedException {
+        System.out.println("str = " + str);
+        long start = System.currentTimeMillis();
+        System.out.println("ImportServiceImpl.updateByAsync--start" + str + Thread.currentThread());
+        Thread.sleep(2000);
+        System.out.println("ImportServiceImpl.updateByAsync--end");
+        long end = System.currentTimeMillis();
+        long use = end- start;
+        System.out.println("耗时 = " + use + "ms");
     }
 }

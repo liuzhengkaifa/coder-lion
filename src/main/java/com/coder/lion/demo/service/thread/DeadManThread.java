@@ -59,6 +59,7 @@ public class DeadManThread implements Runnable {
             e.printStackTrace();
         }finally {
             //当一个线程执行完了，计数要减一下，不然这个线程会一直挂起
+            System.out.println("Thread.currentThread().getName()+\"------------------\" = " + Thread.currentThread().getName() + "------------------");
             count.countDown();
         }
     }
