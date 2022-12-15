@@ -18,4 +18,6 @@ public interface ImportService {
     Future addUserByAsync(String str) throws InterruptedException;
 
     void updateByAsync(String str) throws InterruptedException;
+
+    void testThread();
 }

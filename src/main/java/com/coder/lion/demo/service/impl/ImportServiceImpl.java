@@ -6,6 +6,7 @@ import com.coder.lion.demo.service.ImportService;
 import com.coder.lion.demo.service.listener.DeadManExcelDataListener;
 import com.coder.lion.demo.utils.MultipartFileToFileUtils;
 import com.coder.lion.demo.utils.RedisUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +20,7 @@ import java.util.concurrent.Future;
  * @Description
  */
 @Service
+@Slf4j
 public class ImportServiceImpl implements ImportService {
 
     @Resource
@@ -60,5 +62,17 @@ public class ImportServiceImpl implements ImportService {
         long end = System.currentTimeMillis();
         long use = end- start;
         System.out.println("耗时 = " + use + "ms");
+    }
+
+    /**
+     *  @Async标注的方法，称之为异步方法；这些方法将在执行的时候，
+     * 将会在独立的线程中被执行，调用者无需等待它的完成，即可继续其他的操作。
+     */
+    @Override
+    @Async() // 参数为线程池配置时的方法名即对应的bean的id ①
+    public void testThread() {
+        log.info("start test thread");
+        System.out.println(Thread.currentThread().getName());
+        log.info("end test thread");
     }
 }

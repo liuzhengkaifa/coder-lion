@@ -16,7 +16,7 @@ import java.util.concurrent.*;
  3. CompletableFuture，所有事情都是可以自动完成，即可以在完成之后，回调通知，也可以自己去等待。
  */
 
-public class TheradTest {
+public class CompletableFutureTest {
 
     private static int num = 0;
     public static Integer multipart(Integer a){
