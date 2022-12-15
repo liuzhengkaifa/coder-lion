@@ -11,6 +11,17 @@ public class OptionalUse {
 
     public static void main(String[] args) {
 
+        Optional<String> test = Optional.ofNullable(null);
+        if(test.isEmpty()){
+            System.out.println("test为空 = ");
+            return;
+        }
+
+        String s = test.get();
+        String[] split = s.split(";");
+        System.out.println("split = " + split);
+
+
         //创建一个值为张三的String类型的Optional
         Optional ofOptional14 = Optional.of("张三");
         //如果我们用of方法创建Optional对象时，所传入的值为null，则抛出NullPointerException如下图所示
@@ -22,7 +33,7 @@ public class OptionalUse {
         Optional nullOptional6 = Optional.ofNullable("lisi");
 
         //创建一个空的String类型的Optional对象
-        Optional emptyOptional7 = Optional.empty();
+        Optional<String> emptyOptional7 = Optional.empty();
 
         //输出张三
         Optional stringOptional = Optional.of("张三");

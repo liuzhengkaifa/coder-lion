@@ -2,7 +2,10 @@ package com.coder.lion.demo.controller;
 
 import com.coder.lion.demo.service.ImportService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +23,7 @@ import java.util.concurrent.Future;
 @Api(tags = "用户接口")
 @RestController
 @RequestMapping("/import")
+@Slf4j
 public class ImportController {
     @Autowired
     private ImportService importService;
@@ -39,5 +43,15 @@ public class ImportController {
         long end = System.currentTimeMillis();
         long use = end- start;
         System.out.println("耗时 = " + use + "ms");
+    }
+
+    @ApiOperation(value = "测试线程")
+    @PostMapping("/testThread")
+    @Async()
+    public void testThread() throws InterruptedException {
+        log.info("测试线程开始");
+        log.info("当前线程名称 {}",Thread.currentThread().getName());
+        Thread.sleep(8000);
+        log.info("测试线程结束");
     }
 }
