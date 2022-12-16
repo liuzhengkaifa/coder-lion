@@ -88,7 +88,7 @@ public class ThreadExecutorConfig {
         return threadPoolExecutor;
     }
 
-    @Bean
+/*    @Bean
     public Executor myThreadPoolTaskExecutor() {
         log.info("创建线程池 -- myThreadPoolTaskExecutor");
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new MyThreadPoolTaskExecutor();
@@ -105,6 +105,6 @@ public class ThreadExecutorConfig {
         // 初始化线程池
         threadPoolTaskExecutor.initialize();
         return threadPoolTaskExecutor;
-    }
+    }*/
 
 }
